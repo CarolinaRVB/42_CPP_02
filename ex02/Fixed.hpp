@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:28:57 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/07/03 22:05:41 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/11 18:44:15 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ all instances of a class. static means the member is shared across all instances
  static means the function can be called without an instance of the class and 
  can only access other static members.
 
- Neither: If neither const nor static is used, the function or data member behaves
+Neither: If neither const nor static is used, the function or data member behaves
   normally, meaning it can modify the object's state, and each instance of the class 
   has its own copy of the member.
 */
@@ -32,14 +32,13 @@ all instances of a class. static means the member is shared across all instances
 
 class   Fixed {
 	public:
-		Fixed();
-		Fixed(const int n);
-		Fixed(const float f);       // default constructor
+		Fixed();					// default constructor
 		Fixed(const Fixed& fixed);  // copy constructor
+		Fixed(const int n);
+		Fixed(const float f);
 		~Fixed();                   // destructor
 
 
-		Fixed&  operator=(const Fixed& fixed);
 		Fixed	operator++(int);
 		Fixed&	operator++(void);
 		Fixed	operator--(int);
@@ -51,6 +50,7 @@ class   Fixed {
 		bool	operator<=(const Fixed& fixed);
 		bool	operator==(const Fixed& fixed);
 		bool	operator!=(const Fixed& fixed);
+		Fixed&  operator=(const Fixed& fixed);
 
 		Fixed	operator+(const Fixed& fixed);
 		Fixed	operator-(const Fixed& fixed);
@@ -64,12 +64,13 @@ class   Fixed {
 		
 
 		int		getRawBits(void) const;
+		void 	setRawBits(int const raw);
 		float   toFloat(void) const;
 		int     toInt(void) const;
 
 	private:
-		int                        m_n;
-		const static int           m_bits = 8;
+		int                        _mn;
+		static const int           _mbits = 8;
 		
 
 };

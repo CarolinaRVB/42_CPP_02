@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:28:57 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/07/03 17:41:45 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/11 18:09:34 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,22 @@
 
 class   Fixed {
 	public:
-		Fixed();
+		Fixed();								// default constructor
+		Fixed(const Fixed& fixed);  			// copy constructor
 		Fixed(const int n);
-		Fixed(const float f);       // default constructor
-		Fixed(const Fixed& fixed);  // copy constructor
-		~Fixed();                   // destructor
+		Fixed(const float f);       
+		~Fixed();                   			// destructor
 
 
-		Fixed&  operator=(const Fixed& fixed);
+		Fixed&  operator=(const Fixed& fixed);	// copy assignement operator
 		float   toFloat(void) const;
 		int     toInt(void) const;
+		int 	getRawBits(void) const;
+		void 	setRawBits(int const raw);
 
 	private:
-		int                        m_n;
-		const static int           m_bits = 8;
+		int                        _mn;
+		static const int           _mbits = 8;
 		
 
 };
