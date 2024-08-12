@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:28:57 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/08/11 18:44:15 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:52:32 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ class   Fixed {
 		Fixed	operator--(int);
 		Fixed&	operator--(void);
 
-		bool	operator>(const Fixed& fixed);
-		bool	operator<(const Fixed& fixed);
-		bool	operator>=(const Fixed& fixed);
-		bool	operator<=(const Fixed& fixed);
-		bool	operator==(const Fixed& fixed);
-		bool	operator!=(const Fixed& fixed);
+		bool	operator>(const Fixed& fixed) const;
+		bool	operator<(const Fixed& fixed) const;
+		bool	operator>=(const Fixed& fixed) const;
+		bool	operator<=(const Fixed& fixed) const;
+		bool	operator==(const Fixed& fixed) const;
+		bool	operator!=(const Fixed& fixed) const;
 		Fixed&  operator=(const Fixed& fixed);
 
-		Fixed	operator+(const Fixed& fixed);
-		Fixed	operator-(const Fixed& fixed);
-		Fixed	operator*(const Fixed& fixed);
-		Fixed	operator/(const Fixed& fixed);
+		Fixed	operator+(const Fixed& fixed) const;
+		Fixed	operator-(const Fixed& fixed) const;
+		Fixed	operator*(const Fixed& fixed) const;
+		Fixed	operator/(const Fixed& fixed) const;
 	
 		static Fixed&	min(Fixed& leftfp, Fixed& rightfp);
 		static const Fixed&	min(const Fixed& leftfp, const Fixed& rightfp);

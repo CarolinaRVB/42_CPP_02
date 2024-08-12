@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:28:52 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/08/11 19:31:19 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:51:38 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main( void ) {
     std::cout << a++ << std::endl;                
     std::cout << a << std::endl;                  
 
-    std::cout << b << std::endl;                  // Value of b (should be 10.10)
+    std::cout << b << std::endl;
 
     // Instance vs. Class Context: Non-static member functions require an instance
     // to be called, while static member functions do not.

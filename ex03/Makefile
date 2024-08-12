@@ -6,11 +6,11 @@
 #    By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/25 08:55:46 by crebelo-          #+#    #+#              #
-#    Updated: 2024/07/04 12:00:31 by crebelo-         ###   ########.fr        #
+#    Updated: 2024/08/12 22:29:33 by crebelo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := ex02
+NAME := ex03
 
 SRC := Fixed.cpp \
 	   Point.cpp \
@@ -31,7 +31,7 @@ $(OBJ): %.o: %.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	@echo "$(GREEN) Compiling ex02 ... "
+	@echo "$(GREEN) Compiling ex03 ... "
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) Done! "
 

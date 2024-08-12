@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 22:10:09 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/07/04 11:55:05 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:23:31 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class Point
 		~Point();
 		
 	private:
-		Fixed const m_x;
-		Fixed const m_y;
+		Fixed const _mx;
+		Fixed const _my;
 	
 };
 

@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:28:57 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/07/04 12:53:54 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/12 23:09:44 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,45 +32,48 @@ all instances of a class. static means the member is shared across all instances
 
 class   Fixed {
 	public:
-		Fixed();
-		Fixed(const int n);
-		Fixed(const float f);       // default constructor
+		Fixed();					// default constructor
 		Fixed(const Fixed& fixed);  // copy constructor
+		Fixed(const int n);
+		Fixed(const float f);
 		~Fixed();                   // destructor
 
 
-		Fixed&  operator=(const Fixed& fixed);
 		Fixed	operator++(int);
 		Fixed&	operator++(void);
 		Fixed	operator--(int);
 		Fixed&	operator--(void);
 
-		bool	operator>(const Fixed& fixed);
-		bool	operator<(const Fixed& fixed);
-		bool	operator>=(const Fixed& fixed);
-		bool	operator<=(const Fixed& fixed);
-		bool	operator==(const Fixed& fixed);
-		bool	operator!=(const Fixed& fixed);
+		bool	operator>(const Fixed& fixed) const;
+		bool	operator<(const Fixed& fixed) const;
+		bool	operator>=(const Fixed& fixed) const;
+		bool	operator<=(const Fixed& fixed) const;
+		bool	operator==(const Fixed& fixed) const;
+		bool	operator!=(const Fixed& fixed) const;
+		Fixed&  operator=(const Fixed& fixed);
 
-		Fixed	operator+(const Fixed& fixed);
-		Fixed	operator-(const Fixed& fixed);
-		Fixed	operator*(const Fixed& fixed);
-		Fixed	operator/(const Fixed& fixed);
+		Fixed	operator+(const Fixed& fixed) const;
+		Fixed	operator-(const Fixed& fixed) const;
+		Fixed	operator*(const Fixed& fixed) const;
+		Fixed	operator/(const Fixed& fixed) const;
 	
 		static Fixed&	min(Fixed& leftfp, Fixed& rightfp);
 		static const Fixed&	min(const Fixed& leftfp, const Fixed& rightfp);
 		static Fixed&	max(Fixed& leftfp, Fixed& rightfp);
 		static const Fixed&	max(const Fixed& leftfp, const Fixed& rightfp);
 		
+		Fixed abs() const;
 
-		void		setRawBits(int const raw);
-		int			getRawBits(void) const;
-		float   	toFloat(void) const;
-		int     	toInt(void) const;
+		int		getRawBits(void) const;
+		void 	setRawBits(int const raw);
+		float   toFloat(void) const;
+		int     toInt(void) const;
 
 	private:
-		int                        m_n;
-		const static int           m_bits = 8;
+		int                        _mn;
+		static const int           _mbits = 8;
+		
+
 };
 
 std::ostream&  operator<<(std::ostream& out, const Fixed& fixed);

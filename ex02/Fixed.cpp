@@ -6,7 +6,7 @@
 /*   By: crebelo- <crebelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 16:29:00 by crebelo-          #+#    #+#             */
-/*   Updated: 2024/08/11 19:25:33 by crebelo-         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:57:03 by crebelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,28 +90,28 @@ Fixed	Fixed::operator--(int){
 	return(copy);
 }
 
-bool	Fixed::operator>(const Fixed& fixed){
-	return (toFloat() > fixed.toFloat());
+bool	Fixed::operator>(const Fixed& fixed) const{
+	return (_mn > fixed._mn);
 }
 
-bool	Fixed::operator<(const Fixed& fixed){
-	return (toFloat() < fixed.toFloat());
+bool	Fixed::operator<(const Fixed& fixed) const{
+	return (_mn < fixed._mn);
 }
 
-bool	Fixed::operator>=(const Fixed& fixed){
-	return (toFloat() >= fixed.toFloat());
+bool	Fixed::operator>=(const Fixed& fixed) const{
+	return (_mn >= fixed._mn);
 }
 
-bool	Fixed::operator<=(const Fixed& fixed){
-	return (toFloat() <= fixed.toFloat());
+bool	Fixed::operator<=(const Fixed& fixed) const{
+	return (_mn <= fixed._mn);
 }
 
-bool	Fixed::operator==(const Fixed& fixed){
-	return (toFloat() == fixed.toFloat());
+bool	Fixed::operator==(const Fixed& fixed) const{
+	return (_mn == fixed._mn);
 }
 
-bool	Fixed::operator!=(const Fixed& fixed){
-	return (toFloat() != fixed.toFloat());
+bool	Fixed::operator!=(const Fixed& fixed) const{
+	return (_mn != fixed._mn);
 }
 
 // Fixed-Point Representation: In fixed-point representation, the position
@@ -119,17 +119,17 @@ bool	Fixed::operator!=(const Fixed& fixed){
 // combining the integer representations, and the scale (i.e., position of the
 // fractional part) remains unchanged.
 
-Fixed	Fixed::operator+(const Fixed& fixed){
+Fixed	Fixed::operator+(const Fixed& fixed) const{
 	Fixed	sum;
 
-	sum = toFloat() + fixed.toFloat();
+	sum._mn = _mn + fixed._mn;
 	return (sum);
 }
 
-Fixed	Fixed::operator-(const Fixed& fixed){
+Fixed	Fixed::operator-(const Fixed& fixed) const{
 	Fixed	subtraction;
 
-	subtraction = toFloat() - fixed.toFloat();
+	subtraction._mn =  _mn - fixed._mn;
 	return (subtraction);
 }
 
@@ -140,7 +140,7 @@ Fixed	Fixed::operator-(const Fixed& fixed){
 // result would be an int that doesn't correctly represent the fixed-points
 // multiplication.
 
-Fixed	Fixed::operator*(const Fixed& fixed){
+Fixed	Fixed::operator*(const Fixed& fixed) const{
 	Fixed	multiplication;
 
 	multiplication._mn = (_mn * fixed._mn) >> _mbits;
@@ -152,38 +152,36 @@ Fixed	Fixed::operator*(const Fixed& fixed){
 // If you directly divide the scaled integers and then shift left, you could
 // lose precision because integer division truncates the decimal part.
 
-Fixed	Fixed::operator/(const Fixed& fixed){
-	Fixed	division;
+Fixed	Fixed::operator/(const Fixed& fixed) const{
 
-	if (fixed.toFloat() == 0){
+	if (fixed._mn == 0){
 		std::cout << "Error: can't divide by zero\n";
 		return (*this);
 	}
-	division = toFloat() / fixed.toFloat();
-	return (division);
+	return (Fixed(toFloat() / fixed.toFloat()));
 }
 
 
 Fixed&	Fixed::min(Fixed& leftfp, Fixed& rightfp){
-	if (leftfp.getRawBits() > rightfp.getRawBits())
+	if (leftfp._mn > rightfp._mn)
 		return (rightfp);
 	return (leftfp);
 }
 
 const Fixed&	Fixed::min(const Fixed& leftfp, const Fixed& rightfp){
-	if (leftfp.getRawBits() > rightfp.getRawBits())
+	if (leftfp._mn > rightfp._mn)
 		return (rightfp);
 	return (leftfp);
 }
 
 Fixed&	Fixed::max(Fixed& leftfp, Fixed& rightfp){
-	if (leftfp.getRawBits() > rightfp.getRawBits())
+	if (leftfp._mn > rightfp._mn)
 		return (leftfp);
 	return (rightfp);
 }
 
 const Fixed&	Fixed::max(const Fixed& leftfp, const Fixed& rightfp){
-	if (leftfp.getRawBits() > rightfp.getRawBits())
+	if (leftfp._mn > rightfp._mn)
 		return (leftfp);
 	return (rightfp);
 }
